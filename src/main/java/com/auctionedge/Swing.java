@@ -1,9 +1,11 @@
 package com.auctionedge;
 
 public class Swing {
+    private int idx;
     private boolean strike;
 
-    public Swing() {
+    public Swing(int idx) {
+        this.idx = idx;
         strike = false;
     }
 

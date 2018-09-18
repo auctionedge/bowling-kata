@@ -4,6 +4,10 @@ public class Pins {
     private int pinsUp;
 
     public Pins() {
+        set();
+    }
+
+    public void set() {
         pinsUp = 10;
     }
 

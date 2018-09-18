@@ -1,32 +1,18 @@
 package com.auctionedge;
 
 public class Frame {
-    private Swing swings[];
-    private int curSwingIdx;
+    private int frameIdx;
+    private Swings swings;
     private int score;
 
-    public Frame() {
-        swings = new Swing[2];
-        for (int i = 0; i < swings.length; i++) {
-            swings[i] = new Swing();
-        }
-        curSwingIdx = 0;
+    public Frame(int frameIdx) {
+        this.frameIdx = frameIdx;
+        swings = new Swings();
         score = 0;
     }
 
-    public int getCurSwingIdx() {
-        return curSwingIdx;
-    }
-
-    public boolean incSwingIdx() {
-        if (curSwingIdx < swings.length - 1) {
-            curSwingIdx ++;
-            return true;
-        }
-        else {
-            return false;
-        }
-
+    public Swing getCurSwing() {
+        return swings.getCurSwing();
     }
 
     public void increaseScore(int amount) {

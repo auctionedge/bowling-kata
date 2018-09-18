@@ -1,8 +1,8 @@
 package steps;
 
 import com.auctionedge.BowlingGame;
-import cucumber.api.DataTable;
 import cucumber.api.java8.En;
+import io.cucumber.datatable.DataTable;
 import org.junit.Assert;
 
 import java.util.List;

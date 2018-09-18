@@ -4,17 +4,24 @@ import java.util.List;
 
 public class BowlingGame {
 
-	private int score = 0;
+    private int score;
+    private Game game;
+
+    public BowlingGame() {
+        score = 0;
+        game = new Game();
+    }
 
 	public void rolls(List<Integer> theRolls) {
-	    score = 0;
-        for (Integer roll : theRolls) {
-            System.out.format("roll: %d\n", roll);
-            score += roll;
+        for (Integer pinsDown : theRolls) {
+            System.out.format("pinsDown: %d\n", pinsDown);
+            boolean valid = game.swing(pinsDown);
+            System.out.format("valid: %b\n", valid);
+            System.out.format("pinsLeft: %d\n", game.getPinsLeft());
         }
 	}
 
 	public int score() {
-		return score;
+		return game.getScore();
 	}
 }

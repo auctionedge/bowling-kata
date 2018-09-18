@@ -2,11 +2,9 @@ package com.auctionedge;
 
 public class Pins {
     private int pinsUp;
-    private int pinsDown;
 
     public Pins() {
         pinsUp = 10;
-        pinsDown = 0;
     }
 
     public boolean whack(int down) {
@@ -14,7 +12,6 @@ public class Pins {
             return false;
 
         pinsUp -= down;
-        pinsDown += down;
         return true;
     }
 

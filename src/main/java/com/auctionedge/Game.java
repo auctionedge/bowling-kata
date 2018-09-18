@@ -1,14 +1,13 @@
 package com.auctionedge;
 
 public class Game {
-    private Pins pins;
     private Frame[] frames;
     private int curFrameIdx;
     private int score;
     private boolean gameOver;
+    private Pins pins;
 
     public Game() {
-        pins = new Pins();
         frames = new Frame[10];
         for (int i = 0; i < frames.length; i++) {
             frames[i] = new Frame();
@@ -16,6 +15,7 @@ public class Game {
         curFrameIdx = 0;
         score = 0;
         gameOver = false;
+        pins = new Pins();
     }
 
     public boolean swing(int down) {
@@ -25,7 +25,22 @@ public class Game {
         if (pins.whack(down) == false)
             return false;
 
-        if (frames[curFrameIdx].incSwingIdx())
+        Frame curFrame = frames[curFrameIdx];
+        Swing curSwing = curFrame.
+        int pinsUp = pins.getPinsUp();
+
+        if (curFrame.getCurSwingIdx() == 0) {
+            if (pinsUp == 0) {
+                curFrame.setStrike();
+            }
+            else {
+                curFrame.setSpare();
+            }
+        }
+        else {
+
+        }
+        if (curFrame.incSwingIdx())
             return true;
         else
             return incFrameIdx();
@@ -42,6 +57,7 @@ public class Game {
     public boolean incFrameIdx() {
         if (curFrameIdx < frames.length - 1) {
             curFrameIdx++;
+            pins = new Pins();
             return true;
         }
         else {

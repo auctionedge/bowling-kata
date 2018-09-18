@@ -1,16 +1,18 @@
 package com.auctionedge;
 
 public class Swing {
-    private int pinsUp;
-    private int pinsDown;
+    private boolean strike;
 
     public Swing() {
-        pinsUp = 10;
-        pinsDown = 0;
+        strike = false;
     }
 
-    public void fall(int down) {
-        pinsUp -= down;
-        pinsDown += down;
+    public void setStrike() {
+        strike = true;
     }
+
+     public boolean isStrike() {
+        return strike;
+    }
+
 }

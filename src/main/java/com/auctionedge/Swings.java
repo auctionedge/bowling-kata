@@ -2,13 +2,16 @@ package com.auctionedge;
 
 public class Swings {
     private Swing swings[];
+    private static final int INITIAL_MAX_SWINGS = 2;
+    private int maxSwings;
     private int curIdx;
 
     public Swings() {
-        swings = new Swing[3];
+        swings = new Swing[2];
         for (int i = 0; i < swings.length; i++) {
             swings[i] = new Swing(i);
         }
+        maxSwings = INITIAL_MAX_SWINGS;
         curIdx = 0;
     }
 
@@ -16,26 +19,14 @@ public class Swings {
         return swings[curIdx];
     }
 
-    public boolean incIdx(int frameIdx) {
-        if (frameIdx < 9) {
-            if (curIdx < swings.length - 2) {
-                curIdx++;
-                return true;
-            }
-            else {
-                return false;
-            }
+    public boolean incIdx(Frame frame) {
+        if (curIdx < maxSwings - 1) {
+            curIdx++;
+            return true;
         }
         else {
-            if (curIdx < swings.length - 1) {
-                curIdx++;
-                return true;
-            }
-            else {
-                return false;
-            }
+            return false;
         }
-
     }
 
     public boolean isFirst() {
@@ -44,5 +35,9 @@ public class Swings {
 
     public boolean isSecond() {
         return curIdx == 1;
+    }
+
+    public void decreaseMaxSwing() {
+        maxSwings -= 1;
     }
 }

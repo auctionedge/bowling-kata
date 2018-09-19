@@ -14,12 +14,16 @@ public class Frame {
         spare = false;
     }
 
+    public int getCurIdx() {
+        return frameIdx;
+    }
+
     public Swing getCurSwing() {
         return swings.getCur();
     }
 
-    public boolean incSwingIdx(int frameIdx) {
-        return swings.incIdx(frameIdx);
+    public boolean incSwingIdx(Frame frame) {
+        return swings.incIdx(frame);
     }
 
     public boolean isFirstSwing() {
@@ -46,4 +50,7 @@ public class Frame {
         return spare;
     }
 
+    public void decreaseMaxSwing() {
+        swings.decreaseMaxSwing();
+    }
 }

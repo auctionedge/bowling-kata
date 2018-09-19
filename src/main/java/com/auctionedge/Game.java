@@ -3,21 +3,16 @@ package com.auctionedge;
 public class Game {
     private Frames frames;
     private int score;
-    private boolean gameOver;
     private Pins pins;
 
     public Game() {
         frames = new Frames();
         score = 0;
-        gameOver = false;
         pins = new Pins();
         pins.set();
     }
 
     public boolean swing(int down) {
-        if (gameOver)
-            return false;
-
         if (pins.whack(down) == false)
             return false;
 
@@ -25,27 +20,42 @@ public class Game {
         Swing curSwing = curFrame.getCurSwing();
         int pinsUp = pins.getPinsUp();
 
-        if (curFrame.getCurSwingIdx() == 0) {
-            if (pinsUp == 0) {
+        score += down;
+
+        if (frames.getPrevFrame() != null && frames.getPrevFrame().isStrike()) {
+            score += down;
+        }
+
+        if (frames.getPrevPrevFrame() != null && frames.getPrevPrevFrame().isStrike()) {
+            score += down;
+        }
+
+        if (frames.getPrevFrame() != null && frames.getPrevFrame().isSpare()) {
+            score += down;
+        }
+
+        if (pinsUp == 0) {
+            if (curFrame.isFirstSwing()) {
                 curFrame.setStrike();
+                pins.set();
+                return frames.incIdx();
             }
-            else {
+            else if (curFrame.isSecondSwing()) {
                 curFrame.setSpare();
             }
         }
-        else {
 
-        }
-        if (curFrame.incSwingIdx())
+        if (curFrame.incSwingIdx(frames.getCurIdx()))
             return true;
-        else
+        else {
+            pins.set();
             return frames.incIdx();
+        }
     }
 
     public int getPinsLeft() {
         return pins.getPinsUp();
     }
-
 
     public int getScore() {
         return score;

@@ -18,6 +18,10 @@ public class BowlingGame {
             boolean valid = game.swing(pinsDown);
             System.out.format("valid: %b\n", valid);
             System.out.format("pinsLeft: %d\n", game.getPinsLeft());
+            if (! valid) {
+                System.out.format("Game Over!\n");
+                break;
+            }
         }
 	}
 

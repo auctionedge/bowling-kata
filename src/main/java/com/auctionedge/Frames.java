@@ -13,6 +13,7 @@ public class Frames {
     }
 
     public boolean incIdx() {
+        System.out.format("curFrameIdx: %d frames.length %d\n", curFrameIdx, frames.length);
         if (curFrameIdx < frames.length - 1) {
             curFrameIdx++;
             return true;
@@ -37,5 +38,9 @@ public class Frames {
             return frames[curFrameIdx - 2];
         else
             return null;
+    }
+
+    public int getCurIdx() {
+        return curFrameIdx;
     }
 }

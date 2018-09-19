@@ -2,28 +2,47 @@ package com.auctionedge;
 
 public class Swings {
     private Swing swings[];
-    private int curSwingIdx;
+    private int curIdx;
 
     public Swings() {
         swings = new Swing[3];
         for (int i = 0; i < swings.length; i++) {
             swings[i] = new Swing(i);
         }
-        curSwingIdx = 0;
+        curIdx = 0;
     }
 
-    public Swing getCurSwing() {
-        return swings[curSwingIdx];
+    public Swing getCur() {
+        return swings[curIdx];
     }
 
-    public boolean incSwingIdx() {
-        if (curSwingIdx < swings.length - 1) {
-            curSwingIdx ++;
-            return true;
+    public boolean incIdx(int frameIdx) {
+        if (frameIdx < 9) {
+            if (curIdx < swings.length - 2) {
+                curIdx++;
+                return true;
+            }
+            else {
+                return false;
+            }
         }
         else {
-            return false;
+            if (curIdx < swings.length - 1) {
+                curIdx++;
+                return true;
+            }
+            else {
+                return false;
+            }
         }
 
+    }
+
+    public boolean isFirst() {
+        return curIdx == 0;
+    }
+
+    public boolean isSecond() {
+        return curIdx == 1;
     }
 }

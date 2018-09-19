@@ -183,4 +183,21 @@ Feature: Scores bowling games
       | 10 |
       | 5 |
       | 5 |
-    Then the score is 280
+    Then the score is 285
+
+  Scenario: Another a Perfect game
+    Given a bowling game
+    When bowler rolls:
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 5 |
+    Then the score is 295

@@ -117,7 +117,6 @@ Feature: Scores bowling games
       | 10 |
     Then the score is 300
 
-
   Scenario: Gutter game
     Given a bowling game
     When bowler rolls:
@@ -168,3 +167,20 @@ Feature: Scores bowling games
       | 5 |
       | 5 |
     Then the score is 150
+
+  Scenario: Almost Perfect game
+    Given a bowling game
+    When bowler rolls:
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 5 |
+      | 5 |
+    Then the score is 280

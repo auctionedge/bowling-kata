@@ -19,16 +19,26 @@ public class Game {
         Frame curFrame = frames.getCurFrame();
         System.out.format("do swing: frame idx: %d down: %d\n", curFrame.getCurIdx(), down);
         int pinsUp = pins.getPinsUp();
+        System.out.format("do swing: pinsUp: %d\n", pinsUp);
 
-        score += down;
-        System.out.format("score increase: score %d\n", score);
+        if (pinsUp == 0) {
+            if (curFrame.isFirstSwing()) {
+                curFrame.setStrike();
+                System.out.format("Is strike\n");
+            }
+            else {
+                curFrame.setSpare();
+                System.out.format("Is spare\n");
+            }
+        }
 
-        if (curFrame.isFirstSwing() && pinsUp == 0)
-            curFrame.setStrike();
-        else
-            curFrame.setSpare(); // NOTICE: Definition of space is not conventional one, should refactor this
+        if (curFrame.getCurIdx() < Frames.INITIAL_MAX_FRAMES) {
+            score += down;
+            System.out.format("score increase: score %d\n", score);
+        }
 
-        if (frames.getPrevFrame() != null && frames.getPrevFrame().isStrike()) {
+        if ((frames.getPrevFrame() != null && frames.getPrevFrame().isStrike()) &&
+            curFrame.getCurIdx() != Frames.INITIAL_MAX_FRAMES + 1) {
             score += down;
             System.out.format("score increase: prev strike: score %d\n", score);
         }

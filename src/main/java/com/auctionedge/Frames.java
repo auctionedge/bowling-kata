@@ -2,7 +2,7 @@ package com.auctionedge;
 
 public class Frames {
     private Frame[] frames;
-    private static final int INITIAL_MAX_FRAMES = 10;
+    public static final int INITIAL_MAX_FRAMES = 10;
     private int maxFrames;
     private int curFrameIdx;
 
@@ -16,17 +16,29 @@ public class Frames {
     }
 
     public boolean incIdx() {
+        System.out.format("1 curFrameIdx: %d maxFrames %d\n", curFrameIdx, maxFrames);
+
         if (curFrameIdx == INITIAL_MAX_FRAMES - 1) {
             if (getCurFrame().isSpare()) {
                 maxFrames += 1;
                 getNextFrame().decreaseMaxSwing();
             }
             else if (getCurFrame().isStrike()) {
-                maxFrames += 2;
-                getNextNextFrame().decreaseMaxSwing();
+                maxFrames += 1;
             }
         }
-        System.out.format("curFrameIdx: %d maxFrames %d\n", curFrameIdx, maxFrames);
+
+        System.out.format("1 curFrameIdx: %d maxFrames %d\n", curFrameIdx, maxFrames);
+
+        if (curFrameIdx == INITIAL_MAX_FRAMES) {
+            if (getCurFrame().isStrike()) {
+                maxFrames += 1;
+                getNextFrame().decreaseMaxSwing();
+            }
+        }
+
+        System.out.format("2 curFrameIdx: %d maxFrames %d\n", curFrameIdx, maxFrames);
+
         if (curFrameIdx < maxFrames - 1) {
             curFrameIdx++;
             return true;

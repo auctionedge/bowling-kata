@@ -116,3 +116,88 @@ Feature: Scores bowling games
       | 10 |
       | 10 |
     Then the score is 300
+
+  Scenario: Gutter game
+    Given a bowling game
+    When bowler rolls:
+      | 0 |
+      | 0 |
+      | 0 |
+      | 0 |
+      | 0 |
+      | 0 |
+      | 0 |
+      | 0 |
+      | 0 |
+      | 0 |
+      | 0 |
+      | 0 |
+      | 0 |
+      | 0 |
+      | 0 |
+      | 0 |
+      | 0 |
+      | 0 |
+      | 0 |
+      | 0 |
+    Then the score is 0
+
+  Scenario: All spares game
+    Given a bowling game
+    When bowler rolls:
+      | 5 |
+      | 5 |
+      | 5 |
+      | 5 |
+      | 5 |
+      | 5 |
+      | 5 |
+      | 5 |
+      | 5 |
+      | 5 |
+      | 5 |
+      | 5 |
+      | 5 |
+      | 5 |
+      | 5 |
+      | 5 |
+      | 5 |
+      | 5 |
+      | 5 |
+      | 5 |
+      | 5 |
+    Then the score is 150
+
+  Scenario: Almost Perfect game
+    Given a bowling game
+    When bowler rolls:
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 5 |
+      | 5 |
+    Then the score is 285
+
+  Scenario: Another a Perfect game
+    Given a bowling game
+    When bowler rolls:
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 10 |
+      | 5 |
+    Then the score is 295

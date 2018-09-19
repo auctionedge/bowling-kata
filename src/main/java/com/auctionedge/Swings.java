@@ -9,17 +9,13 @@ public class Swings {
     public Swings() {
         swings = new Swing[2];
         for (int i = 0; i < swings.length; i++) {
-            swings[i] = new Swing(i);
+            swings[i] = new Swing();
         }
         maxSwings = INITIAL_MAX_SWINGS;
         curIdx = 0;
     }
 
-    public Swing getCur() {
-        return swings[curIdx];
-    }
-
-    public boolean incIdx(Frame frame) {
+   public boolean incIdx(Frame frame) {
         if (curIdx < maxSwings - 1) {
             curIdx++;
             return true;
@@ -31,10 +27,6 @@ public class Swings {
 
     public boolean isFirst() {
         return curIdx == 0;
-    }
-
-    public boolean isSecond() {
-        return curIdx == 1;
     }
 
     public void decreaseMaxSwing() {

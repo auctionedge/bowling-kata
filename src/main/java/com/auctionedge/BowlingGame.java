@@ -4,11 +4,9 @@ import java.util.List;
 
 public class BowlingGame {
 
-    private int score;
     private Game game;
 
     public BowlingGame() {
-        score = 0;
         game = new Game();
     }
 

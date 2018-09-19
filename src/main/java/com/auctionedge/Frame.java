@@ -3,7 +3,6 @@ package com.auctionedge;
 public class Frame {
     private int frameIdx;
     private Swings swings;
-    private int score;
     private boolean strike;
     private boolean spare;
 
@@ -18,20 +17,12 @@ public class Frame {
         return frameIdx;
     }
 
-    public Swing getCurSwing() {
-        return swings.getCur();
-    }
-
     public boolean incSwingIdx(Frame frame) {
         return swings.incIdx(frame);
     }
 
     public boolean isFirstSwing() {
         return swings.isFirst();
-    }
-
-    public boolean isSecondSwing() {
-        return swings.isSecond();
     }
 
     public void setStrike() {

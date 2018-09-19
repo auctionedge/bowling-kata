@@ -53,15 +53,11 @@ public class Frames {
             return null;
     }
 
-    public Frame getNextFrame() {
+    private Frame getNextFrame() {
         return frames[curFrameIdx + 1];
     }
 
-    public Frame getNextNextFrame() {
+    private Frame getNextNextFrame() {
         return frames[curFrameIdx + 2];
-    }
-
-    public int getCurIdx() {
-        return curFrameIdx;
     }
 }
